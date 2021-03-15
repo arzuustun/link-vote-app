@@ -9,7 +9,9 @@ It is an application that you can add new links, up vote or down vote to existin
  ```
  npm install
  ```
+  ```
  npm start
+  ```
  
 
  # Pages
