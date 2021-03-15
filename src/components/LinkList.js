@@ -3,8 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { FaPlus } from 'react-icons/fa';
 import LinkItem from './LinkItem';
-//import Paging from './Paging';
-import RemoveLink from './RemoveLink';
+import Paging from './Paging';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -17,10 +16,7 @@ import {
 } from "../actions/links";
 import { connect } from "react-redux";
 import { orderTypes } from '../utils/api';
-// import Toast from 'react-bootstrap/Toast';
-// import ToastHeader from 'react-bootstrap/ToastHeader';
-//import ToastBody from 'react-bootstrap/ToastBody';
-
+import { Toastr } from './Toastr';
 class LinkList extends Component {
     state = {
         removebox: false,
@@ -43,6 +39,10 @@ class LinkList extends Component {
     handleRemove = (id) => {
         const { dispatch } = this.props;
         dispatch(handleRemoveLink(id))
+        Toastr(`${this.state.link.name} REMOVED.`, 'error');
+        this.setState({
+            removebox: false,
+        })
     }
 
     handleRemoveBox = (link) => {
@@ -51,7 +51,11 @@ class LinkList extends Component {
             link
         })
     }
-
+    handleCancel = () => {
+        this.setState({
+            removebox: false,
+        })
+    }
     handleVote = (id, vote) => {
         const { dispatch } = this.props;
         if (vote) {
@@ -67,9 +71,8 @@ class LinkList extends Component {
         return (
             <div className='link-list'>
                 {removebox ?
-                    // <RemoveLink />
                     <Modal.Dialog>
-                        <Modal.Header closeButton>
+                        <Modal.Header  closeButton>
                             <Modal.Title>Remove Link</Modal.Title>
                         </Modal.Header>
 
@@ -81,7 +84,7 @@ class LinkList extends Component {
                         <Modal.Footer>
 
                             <Button variant="primary" onClick={() => { this.handleRemove(this.state.link.id) }}>OK</Button>
-                            <Button variant="secondary">CANCEL</Button>
+                            <Button variant="secondary"onClick={() => { this.handleCancel()}}>CANCEL</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                     : null
@@ -107,7 +110,7 @@ class LinkList extends Component {
                     //  onRemove={() => {this.handleRemove(link.id) }}
                 ))}
 
-
+                <Paging />
             </div>
 
         );

@@ -178,3 +178,19 @@ code {
   margin-top: 10px;
  margin-right: 60px ;
 }
+.message-box {
+  position: absolute;
+  width: 450px;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #868585;
+  background-color: #f7f7f7;
+  cursor: default;
+}
+.toast-success{
+  background-color: green !important;
+}
+.toast-error{
+  background-color: red !important;
+}

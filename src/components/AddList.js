@@ -10,7 +10,7 @@ class AddList extends Component {
     handleAdd = () => {
         const { dispatch } = this.props;
         dispatch(handleAddLink(this.state))
-            Toastr( `${this.state.name} added.`, 'success')
+            Toastr( `${this.state.name} ADDED.`, 'success');
     }
 
     state = {
@@ -39,7 +39,7 @@ class AddList extends Component {
                     <span className='btn-back'> Return to List</span>
                 </Link>
                 <div className='add-header'>
-                    <h1><strong>Add Link List</strong></h1>
+                    <h1><strong>Add New Link</strong></h1>
                 </div>
 
                 <div>
