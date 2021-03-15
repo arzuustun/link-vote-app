@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {FaArrowUp ,FaArrowDown} from 'react-icons/fa';
-import { connect } from 'react-redux';
-import { handleRemoveLink} from "../actions/links";
+//import { connect } from 'react-redux';
+
 class LinkItem extends Component {
     
  
@@ -20,7 +20,8 @@ class LinkItem extends Component {
                     <span className='btn-vote btn-down-vote'onClick={() => onVote(false)}><FaArrowDown /> Down Vote</span>
 
                 </div>
-                <div className="remove-button" onClick={onRemove}>
+                <div className="remove-button" onClick={onRemove}>  
+                   {/* onClick={{onRemove}> */}
                     -
                 </div>
             </div>

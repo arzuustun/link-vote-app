@@ -40,10 +40,10 @@ const orderLinks = (links) => ({
 });
 export const handleOrderLinks = (orderBy) => (dispatch) =>
     get().then((links) => {
+        console.log("orderby",orderBy);
         let compareValue = 1;
         if (orderBy === orderTypes.ASC) compareValue = -1;
         else if (orderBy === orderTypes.DESC) compareValue = 1;
-
         links.reverse().sort((a, b) => {
             if (b.points > a.points) return 1 * compareValue;
             else if (b.points < a.points) return -1 * compareValue;
@@ -62,7 +62,6 @@ export const handleOrderLinks = (orderBy) => (dispatch) =>
 
 export const handleLoadLinks = () => (dispatch) =>
        get().then((links) => {
-        console.log("links action", links)
         dispatch(loadLinks(links.reverse()));
     });
 

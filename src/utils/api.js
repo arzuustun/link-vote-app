@@ -47,7 +47,6 @@ function generateUID () {
   }
 
 export function get() {
-      console.log("get");
 	return new Promise((resolve) => resolve(_getStorage()));
 }
 
