@@ -5,7 +5,11 @@ It is an application that you can add new links, up vote or down vote to existin
 # Quickstart
 
 ### Install
+
  Clone Project
+ ```
+git clone https://github.com/arzuustun/link-vote-app.git
+```
  ```
  npm install
  ```
