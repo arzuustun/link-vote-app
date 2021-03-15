@@ -27,7 +27,6 @@ export default function links(state = [], action) {
 		case ORDER_LINKS:
 		case LOAD_LINKS:
 			return [...action.links];
-
 		default:
 			return state;
 	}

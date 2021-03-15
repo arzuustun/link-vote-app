@@ -194,3 +194,18 @@ code {
 .toast-error{
   background-color: red !important;
 }
+.paging-active {
+  border: 1px solid #868585;
+  padding: 3px 8px 3px 8px;
+}
+
+.paging-disabled {
+  pointer-events: none;
+  opacity:0.6;
+}
+.paging-margin{
+  margin-top: 4px;
+}
+.prev-page-margin{
+  margin-left:100px ;
+}

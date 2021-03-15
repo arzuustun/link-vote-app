@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-// import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { handleAddLink } from "../actions/links";
-import { Toastr} from './Toastr';
+import { Toastr } from './Toastr';
 class AddList extends Component {
 
     handleAdd = () => {
         const { dispatch } = this.props;
         dispatch(handleAddLink(this.state))
-            Toastr( `${this.state.name} ADDED.`, 'success');
+        Toastr(`${this.state.name} ADDED.`, 'success');
     }
 
     state = {
@@ -80,4 +79,3 @@ class AddList extends Component {
 }
 
 export default connect()(AddList);
-// statedeki değişikliği componente gösterir stateden veri almanı saglıyor

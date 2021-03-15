@@ -10,7 +10,6 @@ class NavApp extends Component {
 <div>
             <Navbar>
                 <Navbar.Brand href="/#">
-                    {/* bg="light" variant="light" */}
                     <img src={logo} alt="HepsiBurada" width="300" height="50"  />
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
@@ -22,9 +21,7 @@ class NavApp extends Component {
                 </Navbar.Text>
                 </Nav>
                 </Navbar.Collapse>
-               
             </Navbar>
-            {/* <hr className='hr-line' /> */}
              </div>
         )
     }

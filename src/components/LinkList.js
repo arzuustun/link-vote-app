@@ -13,10 +13,12 @@ import {
     handleDownvoteLink,
     handleLoadLinks,
     handleOrderLinks,
+    handleChangePage,
 } from "../actions/links";
 import { connect } from "react-redux";
 import { orderTypes } from '../utils/api';
 import { Toastr } from './Toastr';
+
 class LinkList extends Component {
     state = {
         removebox: false,
@@ -25,6 +27,7 @@ class LinkList extends Component {
     componentDidMount() {
         const { dispatch } = this.props
         dispatch(handleLoadLinks())
+            .then(() => { dispatch(handleChangePage(1)) })
 
     }
     handleChangeOrderByDesc = (e) => {
@@ -72,7 +75,7 @@ class LinkList extends Component {
             <div className='link-list'>
                 {removebox ?
                     <Modal.Dialog>
-                        <Modal.Header  closeButton>
+                        <Modal.Header closeButton>
                             <Modal.Title>Remove Link</Modal.Title>
                         </Modal.Header>
 
@@ -80,11 +83,9 @@ class LinkList extends Component {
                             <p>Do you want to remove:</p>
                             <h3>{this.state.link.name}</h3>
                         </Modal.Body>
-
                         <Modal.Footer>
-
                             <Button variant="primary" onClick={() => { this.handleRemove(this.state.link.id) }}>OK</Button>
-                            <Button variant="secondary"onClick={() => { this.handleCancel()}}>CANCEL</Button>
+                            <Button variant="secondary" onClick={() => { this.handleCancel() }}>CANCEL</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                     : null
@@ -107,19 +108,21 @@ class LinkList extends Component {
                 {/* Her link LinkItem componenti ile olusturulur */}
                 {Object.values(links).map(link => (
                     <LinkItem key={link.id} link={link} onRemove={() => { this.handleRemoveBox(link) }} onVote={(vote) => { this.handleVote(link.id, vote) }} />
-                    //  onRemove={() => {this.handleRemove(link.id) }}
                 ))}
 
+
                 <Paging />
+
             </div>
 
         );
     }
 
 }
-function mapStateToProps(state) {
+function mapStateToProps({ links, paging }) {
+    const maxPageIndex = paging.activePage * 5
     return {
-        links: state.links
+        links: Object.values(links).slice(maxPageIndex - 5, maxPageIndex)
     }
 }
 export default connect(mapStateToProps)(LinkList);

@@ -4,7 +4,8 @@ import {
     UP_VOTE_LINK,
     DOWN_VOTE_LINK,
     LOAD_LINKS,
-    ORDER_LINKS
+    ORDER_LINKS,
+    CHANGE_PAGE
 } from './types';
 import { get, add,remove,vote,orderTypes } from '../utils/api'
 
@@ -84,3 +85,16 @@ export const handleDownvoteLink = (id) => (dispatch) =>
     vote(id, false).then(() => {
         dispatch(downvoteLink(id));
     });
+export function handleChangePage (page) {
+ return {
+         type: CHANGE_PAGE,
+         page,
+        }
+    };
+//  const orderLinks = (links) => ({
+//     type: CHANGE_PAGE,
+//     page,
+//     });
+// export const changePage=(page) =>
+//     dispatch(changepageLink(id));
+// );

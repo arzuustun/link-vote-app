@@ -1,9 +1,7 @@
 import toastr from 'toastr'
 
 export const Toastr = (message, type) => {
-    console.log(message);
-    console.log(type);
-  // Toast package'inin option objesi set edilir
+  // Toast package'inin option objesi set edilir.
   toastr.options = {
       closeButton: false,
       debug: false,
@@ -22,14 +20,14 @@ export const Toastr = (message, type) => {
       hideMethod: 'fadeOut'
   }
 
-  // Mevcut alert var ise ekran temizlenir
+  // Mevcut alert var ise ekran temizlenir.
   toastr.clear();
 
-  // Gelen type error ise hata mesaji gosterilir
+  // Gelen type error ise hata mesaji gosterilir.
   if (type === 'error') {
     toastr.error(message)
   } 
-  // Gelen type success ise hata mesaji gosterilir
+  // Gelen type success ise hata mesaji gosterilir.
   else if (type === 'success') {
     toastr.success(message)
   }
